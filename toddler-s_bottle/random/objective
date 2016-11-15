@@ -1,0 +1,5 @@
+This is a 1 pt challenge from pwnable.kr
+
+Daddy, teach me how to use random value in programming!
+
+ssh random@pwnable.kr -p2222 (pw:guest)
