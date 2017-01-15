@@ -60,7 +60,7 @@ Starting off, could we just take 0x21DD09EC and divide it by 5? Well 0x21DD09EC 
 551291112/4 = 137822778
 ```
 
-So we were able to subtract 0x01010104 from 0x21DD09EC, and then divide the difference by four. This means that we have the four pieces needed to give us the desired input. So let's try it out!
+So we were able to subtract 0x01010104 from 0x21DD09EC, and then divide the difference by four. This means that we have the four pieces needed to give us the desired input. So let's try it out (remember we need to send it over in little endian)!
 
 ```
 col@ubuntu:~$ ./col `python -c 'print 4*"\x3a\x02\x37\x08" + "\x04\x01\x01\x01"'`
