@@ -2,7 +2,7 @@ Well this is a game that allows us to play blackjack. Either by looking through 
 
 
 
-
+```
 nt betting() //Asks user amount to bet
 {
  printf("\n\nEnter Bet: $");
@@ -15,7 +15,7 @@ nt betting() //Asks user amount to bet
         scanf("%d", &bet);
         return bet;
  }
-
+```
 
 
 
